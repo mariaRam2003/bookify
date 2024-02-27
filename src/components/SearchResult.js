@@ -3,6 +3,7 @@ import "../styles/SearchResult.css";
 
 function SearchResult({ result, selectable, onSelect, authorId }) {
   const [authorName, setAuthorName] = useState("");
+  const [bookImage, setBookImage] = useState("");
 
   useEffect(() => {
     const fetchAuthorName = async () => {
@@ -27,6 +28,31 @@ function SearchResult({ result, selectable, onSelect, authorId }) {
     fetchAuthorName();
   }, [authorId]);
 
+  useEffect(() => {
+    const fetchBookImage = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_DOMAIN}/libros/img/${encodeURIComponent(
+            result.title
+          )}`
+        );
+        if (response.ok) {
+          const imageUrl = URL.createObjectURL(await response.blob());
+          setBookImage(imageUrl);
+        } else {
+          console.error(
+            "Error al obtener la imagen del libro:",
+            response.statusText
+          );
+        }
+      } catch (error) {
+        console.error("Error al obtener la imagen del libro:", error.message);
+      }
+    };
+
+    fetchBookImage();
+  }, [result.title]);
+
   const handleClick = () => {
     if (selectable && onSelect) {
       onSelect(result);
@@ -38,11 +64,7 @@ function SearchResult({ result, selectable, onSelect, authorId }) {
       className={`search-result ${selectable ? "selectable" : ""}`}
       onClick={handleClick}
     >
-      <img
-        src={result.cover_image} // Utiliza la URL de la imagen del cover del resultado
-        alt={result.title}
-        className="search-result-image"
-      />
+      <img src={bookImage} alt={result.title} className="search-result-image" />
       <div className="search-result-details">
         <h1 className="search-result-title">{result.title}</h1>
         <p className="search-result-description">{result.description}</p>

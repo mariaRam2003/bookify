@@ -14,6 +14,11 @@ import BooksList from "./Pages/BooksList";
 import UpdateBook from "./Pages/UpdateBook";
 import DeleteBook from "./Pages/DeleteBook";
 import SearchBook from "./Pages/SearchBook";
+import Authors from "./Pages/Authors";
+import AddAuthor from "./Pages/AddAuthor";
+import UpdateAuthor from "./Pages/UpdateAuthor";
+import DeleteAuthor from "./Pages/DeleteAuthor";
+import SearchAuthor from "./Pages/SearchAuthor";
 
 function App() {
   return (
@@ -29,6 +34,11 @@ function App() {
           <Route path="/UPDATEBOOK" element={<UpdateBook />} />
           <Route path="/DELETEBOOK" element={<DeleteBook />} />
           <Route path="/SEARCHBOOK" element={<SearchBook />} />
+          <Route path="/AUTHORS" element={<Authors />} />
+          <Route path="/ADD_AUTHOR" element={<AddAuthor />} />
+          <Route path="/UPDATE_AUTHOR" element={<UpdateAuthor />} />
+          <Route path="/DELETE_AUTHOR" element={<DeleteAuthor />} />
+          <Route path="/SEARCH_AUTHOR" element={<SearchAuthor />} />
         </Routes>
       </BrowserRouter>
     </div>

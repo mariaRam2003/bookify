@@ -13,6 +13,9 @@ const Header = () => {
         <Link to="/books" className="button">
           Books
         </Link>
+        <Link to="/authors" className="button">
+          Authors
+        </Link>
         <Link to="/buscar" className="button">
           Buscar
         </Link>

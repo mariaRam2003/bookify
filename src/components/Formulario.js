@@ -29,25 +29,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const authors = [
-  { label: "Isaac Asimov" },
-  { label: "George Orwell" },
-  { label: "Ray Bradbury" },
-  { label: "Aldous Huxley" },
-  { label: "Philip K" },
-];
 const genres = [
-  { label: "Ciencia Ficción" },
-  { label: "Distopía" },
-  { label: "Fantasía" },
-  { label: "Terror" },
-  { label: "Romance" },
+  "Fiction",
+  "Non-Fiction",
+  "Science Fiction",
+  "Fantasy",
+  "Mystery",
+  "Thriller",
+  "Romance",
+  "Western",
+  "Horror",
+  "Historical Fiction",
 ];
 
-function Formulario({ onSubmit, libro }) {
+function Formulario({
+  handleSubmit,
+  title,
+  setTitle,
+  author,
+  setAuthor,
+  genre,
+  setGenre,
+  publicationDate,
+  setPublicationDate,
+  ISBN,
+  setISBN,
+  availableCopies,
+  setAvailableCopies,
+  reviews,
+  setReviews,
+  authorOptions,
+  setAuthorOptions,
+  fetchAuthors,
+}) {
   const classes = useStyles();
   const autorRef = useRef(null);
   const [selectedGenres, setSelectedGenres] = useState([]);
+  const [review, setReview] = useState("");
 
   const handleFocusAutor = () => {
     if (autorRef.current) {
@@ -56,45 +74,48 @@ function Formulario({ onSubmit, libro }) {
   };
 
   const handleGenreChange = (event, value) => {
-    if (value.length <= 3) {
-      setSelectedGenres(value);
-    }
+    setSelectedGenres(value);
+    setGenre(value.join(", "));
   };
 
   return (
-    <form className={classes.formulario} onSubmit={onSubmit}>
+    <form className={classes.formulario} onSubmit={handleSubmit}>
       <TextField
         className={classes.campo}
         label="Título del Libro"
-        id="titulo"
-        name="titulo"
-        defaultValue={libro ? libro.title : ""}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         variant="outlined"
         required
       />
       <Autocomplete
         disablePortal
-        id="autor"
-        options={authors}
+        options={authorOptions}
         sx={{ width: 350 }}
         renderInput={(params) => (
           <TextField
             {...params}
             className={classes.campo}
             label="Autor"
-            id="autor"
-            name="autor"
-            defaultValue={libro ? libro.author : ""}
+            value={author.label}
+            onChange={(e) => {
+              setAuthor({ label: e.target.value, _id: "" });
+              setAuthorOptions([]);
+              fetchAuthors(e.target.value);
+            }}
             variant="outlined"
             required
             onFocus={handleFocusAutor}
             ref={autorRef}
           />
         )}
+        onChange={(event, value) => {
+          setAuthor(value);
+          setAuthorOptions([]);
+        }}
       />
       <Autocomplete
         disablePortal
-        id="genero"
         options={genres}
         sx={{ width: 350 }}
         multiple
@@ -105,39 +126,31 @@ function Formulario({ onSubmit, libro }) {
             {...params}
             className={classes.campo}
             label="Género"
-            id="genero"
-            name="genero"
-            defaultValue={libro ? libro.genre : ""}
             variant="outlined"
-            required
           />
         )}
       />
       <TextField
         className={classes.campo}
         label="Año de Publicación"
-        id="anio"
-        name="anio"
-        defaultValue={libro ? libro.year : ""}
-        type="text"
+        value={publicationDate}
+        onChange={(e) => setPublicationDate(e.target.value)}
         variant="outlined"
         required
       />
       <TextField
         className={classes.campo}
         label="ISBN"
-        id="isbn"
-        name="isbn"
-        defaultValue={libro ? libro.isbn : ""}
+        value={ISBN}
+        onChange={(e) => setISBN(e.target.value)}
         variant="outlined"
         required
       />
       <TextField
         className={classes.campo}
         label="Copias Disponibles"
-        id="copias"
-        name="copias"
-        defaultValue={libro ? libro.copies : ""}
+        value={availableCopies}
+        onChange={(e) => setAvailableCopies(e.target.value)}
         variant="outlined"
         type="number"
         required
@@ -145,9 +158,8 @@ function Formulario({ onSubmit, libro }) {
       <TextField
         className={classes.campo}
         label="Reseña"
-        id="resena"
-        name="resena"
-        defaultValue={libro ? libro.description : ""}
+        value={review}
+        onChange={(e) => setReview(e.target.value)}
         variant="outlined"
         multiline
         rows={4}
