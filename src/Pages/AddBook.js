@@ -58,7 +58,7 @@ const AddBook = () => {
             title,
             genre: [genre],
             publication_date: publicationDate,
-            ISBN,
+            ISBN: ISBN,
             available_copies: availableCopies,
             reviews,
             author_id: author._id,

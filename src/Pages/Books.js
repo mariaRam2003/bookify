@@ -75,15 +75,6 @@ const Books = () => {
               <div className="buttonBooks">Actualizar libro</div>
             </Link>
             <Link
-              to="/SEARCHBOOK"
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              <div className="buttonBooks">Buscar libro</div>
-            </Link>
-            <Link
               to="/DELETEBOOK"
               style={{
                 textDecoration: "none",

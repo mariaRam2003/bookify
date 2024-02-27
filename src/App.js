@@ -13,7 +13,6 @@ import AddBook from "./Pages/AddBook";
 import BooksList from "./Pages/BooksList";
 import UpdateBook from "./Pages/UpdateBook";
 import DeleteBook from "./Pages/DeleteBook";
-import SearchBook from "./Pages/SearchBook";
 import Authors from "./Pages/Authors";
 import AddAuthor from "./Pages/AddAuthor";
 import UpdateAuthor from "./Pages/UpdateAuthor";
@@ -33,7 +32,6 @@ function App() {
           <Route path="/BOOKSLIST" element={<BooksList />} />
           <Route path="/UPDATEBOOK" element={<UpdateBook />} />
           <Route path="/DELETEBOOK" element={<DeleteBook />} />
-          <Route path="/SEARCHBOOK" element={<SearchBook />} />
           <Route path="/AUTHORS" element={<Authors />} />
           <Route path="/ADD_AUTHOR" element={<AddAuthor />} />
           <Route path="/UPDATE_AUTHOR" element={<UpdateAuthor />} />
