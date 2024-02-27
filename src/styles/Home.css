@@ -1,0 +1,95 @@
+/* Estilos de la sección de bienvenida */
+.welcome-section {
+  background-image: url("../images/backgroundHome.png");
+  background-size: cover;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-text {
+  position: relative; /* Establece una posición relativa para poder posicionar la imagen dentro */
+  text-align: end;
+  color: white;
+  width: 100%;
+  background-color: rgba(223, 223, 223, 0.22);
+  height: 400px;
+  display: flex; /* Usa flexbox para alinear elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.welcome-image {
+  position: absolute; /* Posición absoluta para sacar la imagen del flujo normal */
+  left: 0; /* La imagen se posicionará desde el lado izquierdo */
+  top: 0; /* La imagen se posicionará desde la parte superior */
+  height: 90%; /* Ocupa toda la altura del contenedor */
+  margin-top: 20px;
+  margin-left: 290px;
+}
+
+.welcome-text-content {
+  margin-left: 600px; /* Ajusta este margen para dejar espacio al texto */
+  display: inline-block;
+}
+
+.welcome-text h1 {
+  font-size: 50px;
+  font-weight: 800;
+  margin-right: 150px;
+  margin-top: 100px;
+}
+
+.uno {
+  font-size: 26px;
+  margin-right: 330px;
+  font-weight: 700;
+}
+
+.dos {
+  font-size: 26px;
+  margin-right: 260px;
+  margin-bottom: 80px;
+  font-weight: 700;
+}
+
+/* Estilos de la sección de información */
+.info-section {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+.info-section h1 {
+  text-align: center;
+  font-size: 56px;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    minmax(200px, 1fr)
+  ); /* Utilizando repeat() y minmax() para una distribución más equitativa */
+  gap: 20px;
+  justify-content: center;
+}
+
+.info-item {
+  text-align: center;
+}
+
+.counter {
+  font-size: 100px;
+  color: #6c8247;
+  font-weight: 800;
+  margin: 0; /* Eliminando el margen para un aspecto más limpio */
+}
+
+.info-item p {
+  font-weight: 700;
+  font-size: 40px;
+  color: #5f83c5;
+  margin: 0; /* Eliminando el margen para un aspecto más limpio */
+}

@@ -1,0 +1,297 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: black;
+  --fg: black;
+  --input: black;
+  --primary: black;
+  --dur: 1s;
+  font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320px));
+}
+
+.search-title {
+  font-size: 3.5em; /* Aumentamos el tamaño del título */
+  font-weight: 800;
+  color: black; /* Cambiamos el color del texto al tono de marrón */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.577); /* Añadimos un suave sombreado */
+}
+
+.search-text {
+  font-size: 1.3em; /* Aumentamos el tamaño del párrafo */
+  color: #333; /* Cambiamos el color del texto al tono rosado */
+  line-height: 1.6; /* Ajustamos la altura de línea */
+  margin-bottom: 50px; /* Añadimos un espacio inferior */
+}
+.search-by {
+  display: flex;
+  justify-content: center;
+}
+
+.search-by p {
+  margin-left: 100px;
+  font-size: 1.2em;
+  margin-top: 50px;
+  font-weight: 800;
+}
+
+.search-by p:nth-child(1) {
+  margin-left: 0px;
+  color: #7eb9c4; /* Color inicial del primer párrafo */
+  animation: colorChange1 5s infinite alternate; /* Animación para el primer párrafo */
+}
+
+.search-by p:nth-child(2) {
+  color: #d45e2c; /* Color inicial del segundo párrafo */
+  animation: colorChange2 5s infinite alternate; /* Animación para el segundo párrafo */
+}
+
+.search-by p:nth-child(3) {
+  color: #5f83c5; /* Color inicial del tercer párrafo */
+  animation: colorChange3 5s infinite alternate; /* Animación para el tercer párrafo */
+}
+
+.search-by p:nth-child(4) {
+  color: #6c8247; /* Color inicial del cuarto párrafo */
+  animation: colorChange4 5s infinite alternate; /* Animación para el cuarto párrafo */
+}
+
+@keyframes colorChange1 {
+  0%,
+  100% {
+    color: #7eb9c4; /* Color inicial y final del primer párrafo */
+  }
+  50% {
+    color: #d45e2c; /* Color intermedio del primer párrafo */
+  }
+}
+
+@keyframes colorChange2 {
+  0%,
+  100% {
+    color: #d45e2c; /* Color inicial y final del segundo párrafo */
+  }
+  25% {
+    color: #5f83c5; /* Color intermedio del segundo párrafo */
+  }
+}
+
+@keyframes colorChange3 {
+  0%,
+  100% {
+    color: #5f83c5; /* Color inicial y final del tercer párrafo */
+  }
+  75% {
+    color: #6c8247; /* Color intermedio del tercer párrafo */
+  }
+}
+
+@keyframes colorChange4 {
+  0%,
+  100% {
+    color: #6c8247; /* Color inicial y final del cuarto párrafo */
+  }
+  25% {
+    color: #7eb9c4; /* Color intermedio del cuarto párrafo */
+  }
+}
+
+.search-container,
+.search-container input {
+  color: var(--fg);
+  font: 1.2em/1.5 Hind, sans-serif; /* Aumentamos el tamaño de la fuente */
+}
+
+.search-container {
+  background: var(--bg);
+  display: grid;
+  height: auto;
+  justify-content: center;
+  padding: 50px;
+  align-items: center;
+}
+
+.search-container form,
+.search-container input,
+.search-container .caret {
+  margin: auto;
+}
+
+.search-container form {
+  position: relative;
+  width: 100%;
+  max-width: 30em;
+}
+
+.search-container input,
+.search-container .caret {
+  display: block;
+  transition: all calc(var(--dur) * 0.5) linear;
+}
+
+.search-container input {
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.25em inset;
+  caret-color: var(--primary);
+  width: 3em; /* Aumentamos el tamaño de la caja de entrada */
+  height: 3em; /* Aumentamos el tamaño de la caja de entrada */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.search-container input:focus,
+.search-container input:valid {
+  background: var(--input);
+  border-radius: 0.25em;
+  box-shadow: none;
+  padding: 1em 1.5em; /* Ajustamos el relleno para que coincida con el tamaño de la caja */
+  transition-duration: calc(var(--dur) * 0.25);
+  transition-delay: calc(var(--dur) * 0.25);
+  width: 100%;
+  height: auto; /* Restablecemos la altura automática */
+}
+
+.search-container input:focus {
+  animation: showCaret var(--dur) steps(1);
+  outline: transparent;
+}
+
+.search-container input:focus + .caret,
+.search-container input:valid + .caret {
+  animation: handleToCaret var(--dur) linear;
+  background: transparent;
+  width: 1px;
+  height: 1.5em;
+  transform: translate(0, -1em) rotate(-180deg) translate(7.5em, -0.25em);
+}
+
+.search-container input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.search-container label {
+  color: #e3e4e8;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.search-container .caret {
+  background: currentColor;
+  border-radius: 0 0 0.125em 0.125em;
+  margin-bottom: -0.6em;
+  width: 0.35em;
+  height: 2em;
+  transform: translate(0.5em, -1.2em) rotate(-45deg) translate(0, 0.875em);
+  transform-origin: 50% 0;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: white;
+    --fg: #373871;
+    --input: #bec4ca4b;
+    --primary: #373871;
+    --dur: 1s;
+    font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320px));
+  }
+}
+
+/* Animations */
+@keyframes showCaret {
+  from {
+    caret-color: transparent;
+  }
+  to {
+    caret-color: var(--primary);
+  }
+}
+
+@keyframes handleToCaret {
+  from {
+    background: currentColor;
+    width: 0.25em;
+    height: 1em;
+    transform: translate(0, -1em) rotate(-45deg) translate(0, 0.875em);
+  }
+  25% {
+    background: currentColor;
+    width: 0.25em;
+    height: 1em;
+    transform: translate(0, -1em) rotate(-180deg) translate(0, 0.875em);
+  }
+  50%,
+  62.5% {
+    background: var(--primary);
+    width: 1px;
+    height: 1.5em;
+    transform: translate(0, -1em) rotate(-180deg) translate(13em, 2.5em);
+  }
+  75%,
+  99% {
+    background: var(--primary);
+    width: 1px;
+    height: 1.5em;
+    transform: translate(0, -1em) rotate(-180deg) translate(13em, -0.25em);
+  }
+  87.5% {
+    background: var(--primary);
+    width: 1px;
+    height: 1.5em;
+    transform: translate(0, -1em) rotate(-180deg) translate(13em, 0.525em);
+  }
+  to {
+    background: transparent;
+    width: 1px;
+    height: 1.5em;
+    transform: translate(0, -1em) rotate(-180deg) translate(7.5em, -0.25em);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-container > * {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.search-container > *:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.search-container > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.search-container > *:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.search-container > *:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.search-container > *:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.search-container > *:nth-child(6) {
+  animation-delay: 1s;
+}
+

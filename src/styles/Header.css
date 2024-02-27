@@ -1,0 +1,57 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dfdfdf;
+  padding: 10px 30px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 25px; /* Bordes más redondeados */
+  border: 2px solid transparent; /* Borde transparente */
+  padding: 12px 40px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease; /* Añadida transición para el color del texto */
+  text-decoration: none;
+  outline: none;
+}
+
+.button:first-child {
+  margin-left: 0;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+
+.button:nth-child(odd) {
+  background-color: #5f83c5;
+}
+
+.button:nth-child(odd):hover {
+  background-color: #7baad8; 
+}
+
+
+.button:nth-child(even) {
+  background-color: #556933; 
+}
+
+.button:nth-child(even):hover {
+  background-color: #6c8247; 
+}

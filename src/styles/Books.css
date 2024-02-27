@@ -1,0 +1,189 @@
+.books-container {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.books {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: all 2s ease-in-out;
+  opacity: 1;
+  z-index: 1;
+}
+
+.book-image {
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* posiciones finales de los libros */
+.book1-move {
+  animation: scatter1 3s ease-in-out forwards;
+}
+
+.book2-move {
+  animation: scatter2 3s ease-in-out forwards;
+}
+
+.book3-move {
+  animation: scatter3 3s ease-in-out forwards;
+}
+
+.book4-move {
+  animation: scatter4 3s ease-in-out forwards;
+}
+
+.book5-move {
+  animation: scatter5 3s ease-in-out forwards;
+}
+
+.book6-move {
+  animation: scatter6 3s ease-in-out forwards;
+}
+
+.book7-move {
+  animation: scatter7 3s ease-in-out forwards;
+}
+
+.book8-move {
+  animation: scatter8 3s ease-in-out forwards;
+}
+
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.text-container h1 {
+  font-size: 3.5em; /* Aumentamos el tamaño del título */
+  font-weight: 800;
+  color: black; /* Cambiamos el color del texto al tono de marrón */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.577); /* Añadimos un suave sombreado */
+  margin-bottom: 10px; /* Añadimos un espacio inferior */
+}
+
+.text-container p {
+  font-size: 1.3em; /* Aumentamos el tamaño del párrafo */
+  color: #333; /* Cambiamos el color del texto al tono rosado */
+  line-height: 1.6; /* Ajustamos la altura de línea */
+  margin-bottom: 50px; /* Añadimos un espacio inferior */
+}
+
+.text-show {
+  opacity: 1;
+}
+
+@keyframes scatter1 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-800px, -380px);
+  }
+}
+
+@keyframes scatter2 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-350px, -380px);
+  }
+}
+
+@keyframes scatter3 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(100px, -380px);
+  }
+}
+
+@keyframes scatter4 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(590px, -380px);
+  }
+}
+
+@keyframes scatter5 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(590px, -100px);
+  }
+}
+
+@keyframes scatter6 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(590px, 150px);
+  }
+}
+
+@keyframes scatter7 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-790px, 150px);
+  }
+}
+
+@keyframes scatter8 {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-790px, -100px);
+  }
+}
+.buttons-container {
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.buttons-show {
+  opacity: 1;
+}
+
+.buttonBooks {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añadido un ligero sombreado */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  width: 50%;
+  margin-left: 200px;
+}
+
+.buttonBooks:hover {
+  background-color: #6c8247;
+  transform: translateY(-2px); /* Efecto de levantamiento suave */
+}
