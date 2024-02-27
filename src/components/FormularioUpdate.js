@@ -23,7 +23,7 @@ function FormularioUpdate({ libro, onSubmit, updateSuccess }) {
     libro.available_copies.toString()
   );
   const [reviews, setReviews] = useState(libro.reviews.join(", "));
-  const [imageUrl, setImageUrl] = useState(""); // Nuevo estado para la URL de la imagen
+  const [imageUrl, setImageUrl] = useState(libro.image_url); // Estado para la URL de la imagen
 
   useEffect(() => {
     setTitle(libro.title);
@@ -32,6 +32,7 @@ function FormularioUpdate({ libro, onSubmit, updateSuccess }) {
     setISBN(libro.ISBN);
     setAvailableCopies(libro.available_copies.toString());
     setReviews(libro.reviews.join(", "));
+    setImageUrl(libro.image_url); // Establecer la URL de la imagen original
   }, [libro]);
 
   useEffect(() => {
@@ -42,29 +43,10 @@ function FormularioUpdate({ libro, onSubmit, updateSuccess }) {
       setPublicationDate("");
       setISBN("");
       setAvailableCopies("");
+      setReviews("");
+      setImageUrl(imageUrl);
     }
   }, [updateSuccess]);
-
-  const fetchImage = async () => {
-    try {
-      const response = await fetch(
-        `https://proyecto1db2-production.up.railway.app/libros/image/${title}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setImageUrl(data.url);
-      } else {
-        console.error("Error al obtener la imagen:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error al obtener la imagen:", error.message);
-    }
-  };
-
-  // Llamar a la función fetchImage al montar el componente
-  useEffect(() => {
-    fetchImage();
-  }, [title]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -174,7 +174,25 @@ h2:hover::after {
 .update-form {
   max-width: 400px; /* Ajusta según tus necesidades */
   flex-grow: 1; /* Para que ocupe todo el espacio disponible */
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
+
+.update-form button {
+  padding: 10px 10px;
+  display: block;
+  margin-top: 10px;
+  background-color: #5f83c5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
 .success-message {
   color: green;
   font-weight: bold;
