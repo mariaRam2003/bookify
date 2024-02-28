@@ -18,6 +18,7 @@ import AddAuthor from "./Pages/AddAuthor";
 import UpdateAuthor from "./Pages/UpdateAuthor";
 import DeleteAuthor from "./Pages/DeleteAuthor";
 import SearchAuthor from "./Pages/SearchAuthor";
+import Statistics from "./Pages/Statistics";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/UPDATE_AUTHOR" element={<UpdateAuthor />} />
           <Route path="/DELETE_AUTHOR" element={<DeleteAuthor />} />
           <Route path="/SEARCH_AUTHOR" element={<SearchAuthor />} />
+          <Route path="/STATISTICS" element={<Statistics />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -5,7 +5,7 @@ function Usuarios() {
   return (
     <div>
       <Header />
-      <h1>Usuarios Page</h1>
+      <h2>Usuarios Page</h2>
     </div>
   );
 }

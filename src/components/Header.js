@@ -22,6 +22,9 @@ const Header = () => {
         <Link to="/usuarios" className="button">
           Usuarios
         </Link>
+        <Link to="/statistics" className="button">
+          Statistics
+        </Link>
       </div>
     </header>
   );

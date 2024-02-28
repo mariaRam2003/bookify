@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.image-container {
+  margin-top: 20px;
+}
+
+.json-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+.text-statistcs {
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.text-h2-statistcs {
+  font-size: 2.5em; /* Aumentamos el tamaño del título */
+  font-weight: 800;
+  color: black; /* Cambiamos el color del texto al tono de marrón */
+  margin: 30px; /* Añadimos un espacio inferior */
+  display: inline-block; /* Para que la animación funcione correctamente */
+  position: relative; /* Para poder mover el título con la animación */
+  margin-left: 50px;
+}
