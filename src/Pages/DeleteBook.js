@@ -5,10 +5,11 @@ import "../styles/Pages.css";
 
 function DeleteBook() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]); // Asegúrate de inicializar searchResults como un array vacío
   const [selectedBook, setSelectedBook] = useState(null);
   const [confirmation, setConfirmation] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [deleteError, setDeleteError] = useState(null);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -21,7 +22,11 @@ function DeleteBook() {
       );
       if (response.ok) {
         const data = await response.json();
-        setSearchResults([data]);
+
+        // Asegurarse de que data sea un array
+        const searchResultsArray = Array.isArray(data) ? data : [data];
+
+        setSearchResults(searchResultsArray);
       } else {
         console.error("Error al buscar el libro:", response.statusText);
       }
@@ -30,16 +35,15 @@ function DeleteBook() {
     }
   };
 
+
   const handleBookSelect = (book) => {
     setSelectedBook(book);
-  };
-
-  const handleDeleteConfirmation = () => {
     setConfirmation(true);
   };
 
   const handleDeleteCancel = () => {
     setConfirmation(false);
+    setSelectedBook(null);
   };
 
   const handleDelete = async () => {
@@ -53,11 +57,16 @@ function DeleteBook() {
       if (response.ok) {
         console.log("Libro eliminado exitosamente");
         setDeleteSuccess(true);
+        setDeleteError(null);
+        setConfirmation(false);
+        setSelectedBook(null);
       } else {
         console.error("Error al eliminar el libro:", response.statusText);
+        setDeleteError("Error al eliminar el libro");
       }
     } catch (error) {
       console.error("Error al conectar con el servidor:", error.message);
+      setDeleteError("Error al conectar con el servidor");
     }
   };
 
@@ -66,7 +75,6 @@ function DeleteBook() {
       <Header />
       <h2>Delete Book</h2>
       <div className="delete-book-container">
-        {/* Barra de búsqueda */}
         <div className="search-bar">
           <input
             type="text"
@@ -76,7 +84,6 @@ function DeleteBook() {
           />
           <button onClick={handleSearchSubmit}>Search</button>
         </div>
-        {/* Resultados de búsqueda */}
         <div className="search-resultsDelete">
           {searchResults.map((book) => (
             <SearchResult
@@ -87,13 +94,12 @@ function DeleteBook() {
             />
           ))}
         </div>
-        {/* Confirmación de eliminación */}
-        {selectedBook && !confirmation && (
+        {confirmation && (
           <div className="delete-confirm">
             <p>Are you sure you want to delete this book?</p>
             <button
               className="delete-confirmation-button"
-              onClick={handleDeleteConfirmation}
+              onClick={handleDelete}
             >
               Yes
             </button>
@@ -105,12 +111,12 @@ function DeleteBook() {
             </button>
           </div>
         )}
-        {/* Mensaje de éxito */}
         {deleteSuccess && (
           <p className="success-message">
             The book has been deleted successfully!
           </p>
         )}
+        {deleteError && <p className="error-message">{deleteError}</p>}
       </div>
     </div>
   );
