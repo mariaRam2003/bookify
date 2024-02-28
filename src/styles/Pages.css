@@ -239,3 +239,45 @@ h2:hover::after {
 .delete-confirmation-button:hover {
   background-color: #f44336;
 }
+/* Estilos para el formulario de ordenamiento y filtrado */
+.sort-filter-form {
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sort-filter-form label {
+  font-size: 1em;
+  color: #333;
+}
+
+.sort-filter-form select,
+.sort-filter-form input[type="text"] {
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.sort-filter-form button {
+  padding: 8px 16px;
+  background-color: #5f83c5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-filter-form button:hover {
+  background-color: #7baad8;
+}
+
+/* Estilos para la lista de usuarios */
+.usuarios-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Cambia a 3 columnas por fila */
+  gap: 20px;
+  margin: 20px auto;
+}
