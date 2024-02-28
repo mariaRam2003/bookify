@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+// FormularioAuthors.js
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -38,13 +39,25 @@ function FormularioAuthors({ handleSubmit }) {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    handleSubmit({ name, email, birthDate, biography, nationality });
+
+    // Convierte birthDate a un formato de fecha ISO
+    const isoBirthDate = new Date(birthDate).toISOString();
+
+    handleSubmit({
+      name,
+      email,
+      birthDate: isoBirthDate,
+      biography,
+      nationality,
+    });
+
     setName("");
     setEmail("");
     setBirthDate("");
     setBiography("");
     setNationality("");
   };
+
 
   return (
     <form className={classes.formulario} onSubmit={handleSubmitForm}>
