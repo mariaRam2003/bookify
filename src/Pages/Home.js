@@ -7,6 +7,9 @@ import welcomeImage from "../images/HomePencil.png";
 const Home = () => {
   const infoSectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [bookCount, setBookCount] = useState(0);
+  const [authorCount, setAuthorCount] = useState(0);
+  const [userCount, setUserCount] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,6 +32,93 @@ const Home = () => {
         observer.unobserve(infoSectionRef.current);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchBookCount = async () => {
+      try {
+        const response = await fetch(
+          "https://proyecto1db2-production.up.railway.app/libros/count",
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setBookCount(data.count);
+        } else {
+          console.error(
+            "Error al obtener el recuento de libros:",
+            response.statusText
+          );
+        }
+      } catch (error) {
+        console.error("Error al obtener el recuento de libros:", error.message);
+      }
+    };
+
+    const fetchAuthorCount = async () => {
+      try {
+        const response = await fetch(
+          "https://proyecto1db2-production.up.railway.app/authors/count",
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setAuthorCount(data.count);
+        } else {
+          console.error(
+            "Error al obtener el recuento de autores:",
+            response.statusText
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Error al obtener el recuento de autores:",
+          error.message
+        );
+      }
+    };
+
+    const fetchUserCount = async () => {
+      try {
+        const response = await fetch(
+          "https://proyecto1db2-production.up.railway.app/users/count",
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setUserCount(data.count);
+        } else {
+          console.error(
+            "Error al obtener el recuento de usuarios:",
+            response.statusText
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Error al obtener el recuento de usuarios:",
+          error.message
+        );
+      }
+    };
+
+    fetchBookCount();
+    fetchAuthorCount();
+    fetchUserCount();
   }, []);
 
   return (
@@ -60,17 +150,15 @@ const Home = () => {
           {isVisible && (
             <>
               <div className="info-item">
-                <CountUp end={50000} duration={3} className="counter" />
+                <CountUp end={bookCount} duration={3} className="counter" />
                 <p>Libros Totales</p>
               </div>
               <div className="info-item">
-                <span className="counter">+</span>
-                <CountUp end={400} duration={3} className="counter" />
+                <CountUp end={authorCount} duration={3} className="counter" />
                 <p>Autores</p>
               </div>
               <div className="info-item">
-                <span className="counter"></span>
-                <CountUp end={2000} duration={3} className="counter" />
+                <CountUp end={userCount} duration={3} className="counter" />
                 <p>Usuarios</p>
               </div>
             </>

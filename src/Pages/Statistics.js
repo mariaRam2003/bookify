@@ -1,4 +1,3 @@
-// Statistics.js
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import "../styles/Statistics.css";
@@ -89,13 +88,15 @@ const Statistics = () => {
         <div className="iframe-container">
           <h3 className="text-statistcs">i-Frames Section</h3>
           <iframe
-            src="https://api.wo-cloud.com/content/widget/?geoObjectKey=6112695&language=en&region=US&timeFormat=HH:mm&windUnit=mph&systemOfMeasurement=imperial&temperatureUnit=fahrenheit"
-            name="CW2"
-            scrolling="no"
-            width="290"
-            height="318"
-            frameborder="0"
-            style={{ border: "1px solid #10658E", borderRadius: "8px" }} // Cambio aquí
+            style={{
+              background: "#F1F5F4",
+              border: "none",
+              borderRadius: "2px",
+              boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)",
+              width: "100vw",
+              height: "100vh",
+            }}
+            src="https://charts.mongodb.com/charts-proyecto-1-bases-de-datos-xtnnp/embed/dashboards?id=65deaffd-7b65-459f-8d0e-ab0f5c755b5a&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=true&scalingWidth=fixed&scalingHeight=fixed"
           ></iframe>
         </div>
       </div>
